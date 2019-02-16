@@ -38,6 +38,7 @@ local sandbox = {
 }
 
 sandbox.browser = {
+  w,h = t and t.getSize() or term.getSize(),
   --[[Core functions]]
   sp = function(x,y,t) return t and t.setCursorPos(x,y) or term.setCursorPos(x,y) end,
   fc = function(col,t) return t and t.setTextColour(col) or term.setTextColour(col) end,
@@ -59,10 +60,9 @@ sandbox.browser = {
   --[[Drawing functions]]
   update = function()
     --[[Draw top]]
-	sandbox.browser.sp(1,1)
 	sandbox.browser.fc(colours.black)
 	sandbox.browser.bc(colours.white)
-	sandbox.browser.write("")
+	sandbox.browser.fill(1,1,w,1," ")
 	
   end,
   --[[Network functions]]
