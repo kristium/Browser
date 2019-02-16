@@ -40,7 +40,7 @@ sandbox.browser.fc = function(col,t) return t and t.setTextColour(col) or term.s
 sandbox.browser.bc = function(col,t) return t and t.setBackgroundColour(col) or term.setBackgroundColour(col) end
 sandbox.browser.write = function(str,t) return t and t.write(str) or term.write(str) end
 
-local function center(str,y,t)
+sandbox.browser.center(str,y,t)
   local w,h = t and t.getSize() or term.getSize()
   sandbox.browser.sp(math.floor(w/2-(#str/2)),y,t)
   sandbox.browser.write(str)
@@ -53,3 +53,4 @@ sandbox.browser = {
 	end,
 	useragent = "Kristium "..version.." (".._HOST..")",
 }
+sandbox.browser.center("test",5)
