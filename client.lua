@@ -35,22 +35,19 @@ local sandbox = {
 	tonumber = tonumber,
 }
 
-sandbox.browser.sp = function(x,y,t) return t and t.setCursorPos(x,y) or term.setCursorPos(x,y) end
-sandbox.browser.fc = function(col,t) return t and t.setTextColour(col) or term.setTextColour(col) end
-sandbox.browser.bc = function(col,t) return t and t.setBackgroundColour(col) or term.setBackgroundColour(col) end
-sandbox.browser.write = function(str,t) return t and t.write(str) or term.write(str) end
-
-sandbox.browser.center(str,y,t)
-  local w,h = t and t.getSize() or term.getSize()
-  sandbox.browser.sp(math.floor(w/2-(#str/2)),y,t)
-  sandbox.browser.write(str)
-end
-
-
 sandbox.browser = {
-	get = function(url)
-
-	end,
+  sp = function(x,y,t) return t and t.setCursorPos(x,y) or term.setCursorPos(x,y) end
+  fc = function(col,t) return t and t.setTextColour(col) or term.setTextColour(col) end
+  bc = function(col,t) return t and t.setBackgroundColour(col) or term.setBackgroundColour(col) end
+  write = function(str,t) return t and t.write(str) or term.write(str) end
+  center = function(str,y,t)
+    local w,h = t and t.getSize() or term.getSize()
+    sandbox.browser.sp(math.floor(w/2-(#str/2)),y,t)
+    sandbox.browser.write(str)
+  end
+  get = function(url)
+	 end,
 	useragent = "Kristium "..version.." (".._HOST..")",
 }
+
 sandbox.browser.center("test",5)
