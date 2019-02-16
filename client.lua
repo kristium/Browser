@@ -1,5 +1,7 @@
 --[[Kristium browser client]]--
 
+-- require("node.lua") -- ??
+
 local node = "https://kristium.ale32bit.me/"
 local version = 1.0
 
@@ -36,6 +38,7 @@ local sandbox = {
 }
 
 sandbox.browser = {
+  --[[Core functions]]
   sp = function(x,y,t) return t and t.setCursorPos(x,y) or term.setCursorPos(x,y) end,
   fc = function(col,t) return t and t.setTextColour(col) or term.setTextColour(col) end,
   bc = function(col,t) return t and t.setBackgroundColour(col) or term.setBackgroundColour(col) end,
@@ -45,9 +48,42 @@ sandbox.browser = {
     sandbox.browser.sp(math.floor(w/2-(#str/2)),y,t)
     sandbox.browser.write(str)
   end,
+  fill = function(x,y,w,h,c)
+	for yt=y,h do
+		for xt=x,w do
+			sandbox.browser.sp(xt,yt)
+			sandbox.browser.write(c)
+		end
+	end
+  end,
+  --[[Drawing functions]]
+  update = function()
+    --[[Draw top]]
+	sandbox.browser.sp(1,1)
+	sandbox.browser.fc(colours.black)
+	sandbox.browser.bc(colours.white)
+	sandbox.browser.write("")
+	
+  end,
+  --[[Network functions]]
   get = function(url)
 	end,
 	useragent = "Kristium "..version.." (".._HOST..")",
 }
 
 sandbox.browser.center("test",5)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
