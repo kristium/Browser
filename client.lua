@@ -1,1 +1,1 @@
-
+--[[Kristium browser client]]--
