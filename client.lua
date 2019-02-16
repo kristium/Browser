@@ -36,17 +36,17 @@ local sandbox = {
 }
 
 sandbox.browser = {
-  sp = function(x,y,t) return t and t.setCursorPos(x,y) or term.setCursorPos(x,y) end
-  fc = function(col,t) return t and t.setTextColour(col) or term.setTextColour(col) end
-  bc = function(col,t) return t and t.setBackgroundColour(col) or term.setBackgroundColour(col) end
-  write = function(str,t) return t and t.write(str) or term.write(str) end
+  sp = function(x,y,t) return t and t.setCursorPos(x,y) or term.setCursorPos(x,y) end,
+  fc = function(col,t) return t and t.setTextColour(col) or term.setTextColour(col) end,
+  bc = function(col,t) return t and t.setBackgroundColour(col) or term.setBackgroundColour(col) end,
+  write = function(str,t) return t and t.write(str) or term.write(str) end,
   center = function(str,y,t)
     local w,h = t and t.getSize() or term.getSize()
     sandbox.browser.sp(math.floor(w/2-(#str/2)),y,t)
     sandbox.browser.write(str)
-  end
+  end,
   get = function(url)
-	 end,
+	end,
 	useragent = "Kristium "..version.." (".._HOST..")",
 }
 
